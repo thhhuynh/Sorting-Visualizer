@@ -1,0 +1,12 @@
+<div class="array-container">
+  <div #arraybar class="array-bar" *ngFor="let bar of array" [style.background-color]="PRIMARY_COLOR" [style.height.px]="bar">
+  <!-- {{bar}} -->
+  </div>
+</div>
+<div>
+  <button (click)="resetArray()">Generate New Array</button>
+  <button (click)="mergeSort()">Merge Sort</button>
+  <button (click)="quickSort()">Quick Sort</button>
+  <button (click)="heapSort()">Heap Sort</button>
+  <button (click)="bubbleSort()">Bubble Sort</button>
+</div>
