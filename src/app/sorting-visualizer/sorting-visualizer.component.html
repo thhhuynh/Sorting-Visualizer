@@ -1,12 +1,26 @@
-<div class="array-container">
-  <div #arraybar class="array-bar" *ngFor="let bar of array" [style.background-color]="PRIMARY_COLOR" [style.height.px]="bar">
-  <!-- {{bar}} -->
-  </div>
+<div id="toolbar">
+    <div class="button" [ngClass]="{'disabled': isCurrentlySorting}" (click)="isCurrentlySorting ? disableLink() : resetArray()">Generate New Array</div>
+    |
+    <div class="button" [style.cursor]="'default'">Change Array Size & Sorting Speed</div>
+    <input class="slider" name="arraySlider" type="range" min="1" max="100" 
+      [ngClass]="{'disabled': isCurrentlySorting}"
+      [(ngModel)]="NUMBER_OF_ARRAY_BARS" (ngModelChange)="resetArray()">
+    <br>
+    <div class="button" [ngClass]="{'disabled': isCurrentlySorting || isDoneSorting}" 
+      (click)="isDoneSorting || isCurrentlySorting ? disableLink() : mergeSort()">Merge Sort</div>
+    |
+    <div class="button" [ngClass]="{'disabled': isCurrentlySorting || isDoneSorting}" 
+      (click)="isDoneSorting || isCurrentlySorting ? disableLink() : quickSort()">Quick Sort</div>
+    |
+    <div class="button" [ngClass]="{'disabled': isCurrentlySorting || isDoneSorting}" 
+      (click)="isDoneSorting || isCurrentlySorting ? disableLink() : heapSort()">Heap Sort</div>
+    |
+    <div class="button" [ngClass]="{'disabled': isCurrentlySorting || isDoneSorting}" 
+      (click)="isDoneSorting || isCurrentlySorting ? disableLink() : bubbleSort()">Bubble Sort</div>
 </div>
-<div>
-  <button (click)="resetArray()">Generate New Array</button>
-  <button (click)="mergeSort()">Merge Sort</button>
-  <button (click)="quickSort()">Quick Sort</button>
-  <button (click)="heapSort()">Heap Sort</button>
-  <button (click)="bubbleSort()">Bubble Sort</button>
+
+<div class="array-container">
+  <div #arraybar class="array-bar" *ngFor="let bar of array" [style.background-color]="isDoneSorting ? '#e6e6fa' :PRIMARY_COLOR" [style.height.px]="bar">
+  {{bar}}
+  </div>
 </div>
