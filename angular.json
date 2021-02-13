@@ -117,8 +117,13 @@
               "devServerTarget": "sorting-visualizer:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "sorting-visualizer"
 }
