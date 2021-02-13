@@ -61,7 +61,7 @@
 }
 
 .array-bar {
-    width: 3px;
+    width: 5px;
     display: inline-block;
     margin: 0 1px;
 }
@@ -69,4 +69,25 @@
 .disabled {
     color: #e6e6fa;
     cursor: default;
+}
+
+.array-bar.class0 {
+    color: #e6e6fa;
+    width: 50px;
+}
+.array-bar.class1 {
+    color: #e6e6fa;
+    width: 30px;
+}
+.array-bar.class2 {
+    width: 20px;
+}
+.array-bar.class3 {
+    width: 10px;
+}
+.array-bar.class4 {
+    width: 7px;
+}
+.array-bar.done {
+    color: black;
 }

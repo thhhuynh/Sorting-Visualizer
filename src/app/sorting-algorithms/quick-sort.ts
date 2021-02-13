@@ -1,38 +1,36 @@
 export function getQuickSortAnimations(array) {
     let animations = [];
     if(array.length <= 1) return array;
-    let auxiliaryArray = array.slice();
-    quickSortHelper(array, 0, array.length - 1, auxiliaryArray, animations);
+    quickSortHelper(array, 0, array.length - 1, animations);
     return animations;
 }
 
-function quickSortHelper(mainArray, start, end, auxiliaryArray, animations): void {
+function quickSortHelper(mainArray, start, end, animations): void {
     if(start < end) {
-        let pivot = partition(mainArray, start, end, auxiliaryArray, animations);
-        quickSortHelper(mainArray, start, pivot - 1, auxiliaryArray, animations);
-        quickSortHelper(mainArray, pivot + 1, end, auxiliaryArray, animations);
+        let pivot = partition(mainArray, start, end, animations);
+        quickSortHelper(mainArray, start, pivot - 1, animations);
+        quickSortHelper(mainArray, pivot + 1, end, animations);
     }
 }
 
-function partition(mainArray, start, end, auxiliaryArray, animations) {
-    let k = start;
+function partition(mainArray, start, end, animations) {
     let pivot = mainArray[end];
     let i = start - 1;
     
+    
     for(let j = start; j <= end - 1; j++) {
-        // animations.push([j, end, true, 'first']);
-        // animations.push([j, end, true, 'second']);
+        animations.push([true, end, j, 'first']);
+        animations.push([true, end, j, 'second']);
         if(mainArray[j] < pivot) {
             i++;
-            animations.push([i, mainArray[j]]);
-            animations.push([j, mainArray[i]]);
+            animations.push([false, i, mainArray[j]]);
+            animations.push([false, j, mainArray[i]]);
             swap(mainArray, i, j);            
         }
     }
-    // animations.push([i+1, end, true, 'first']);
-    // animations.push([i+1, end, true, 'second']);
-    animations.push([i+1, mainArray[end]]);
-    animations.push([end, mainArray[i+1]]);
+
+    animations.push([false, i + 1, mainArray[end]]);
+    animations.push([false, end, mainArray[i + 1]]);
     swap(mainArray, i + 1, end);
     return i + 1;
 }

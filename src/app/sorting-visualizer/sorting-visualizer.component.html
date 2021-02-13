@@ -1,9 +1,9 @@
 <div id="toolbar">
     <div class="button" [ngClass]="{'disabled': isCurrentlySorting}" (click)="isCurrentlySorting ? disableLink() : resetArray()">Generate New Array</div>
     |
-    <div class="button" [style.cursor]="'default'">Change Array Size & Sorting Speed</div>
-    <input class="slider" name="arraySlider" type="range" min="1" max="100" 
-      [ngClass]="{'disabled': isCurrentlySorting}"
+    <div class="button" [ngClass]="{'disabled': isCurrentlySorting}" [style.cursor]="'default'">Change Array Size & Sorting Speed</div>
+    <input class="slider" name="arraySlider" type="range" min="6" max="100" 
+      [ngClass]="{'disabled': isCurrentlySorting}" [attr.disabled]="isCurrentlySorting ? '' : null"
       [(ngModel)]="NUMBER_OF_ARRAY_BARS" (ngModelChange)="resetArray()">
     <br>
     <div class="button" [ngClass]="{'disabled': isCurrentlySorting || isDoneSorting}" 
@@ -20,7 +20,8 @@
 </div>
 
 <div class="array-container">
-  <div #arraybar class="array-bar" *ngFor="let bar of array" [style.background-color]="isDoneSorting ? '#e6e6fa' :PRIMARY_COLOR" [style.height.px]="bar">
+  <div #arraybar class="array-bar" *ngFor="let bar of array" [style.background-color]="isDoneSorting ? '#e6e6fa' : PRIMARY_COLOR" [style.height.px]="bar"
+    [ngClass]="{'done': isDoneSorting && NUMBER_OF_ARRAY_BARS <= 25, 'class0': getArraySizeAndSortingSpeed() === 'class0', 'class1': getArraySizeAndSortingSpeed() === 'class1', 'class2': getArraySizeAndSortingSpeed() === 'class2', 'class3': getArraySizeAndSortingSpeed() === 'class3', 'class4': getArraySizeAndSortingSpeed() === 'class4'}">
   {{bar}}
   </div>
 </div>

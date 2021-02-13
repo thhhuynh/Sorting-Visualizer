@@ -2,6 +2,7 @@
 body {
     background: #dac3cd;
     color: #feeeed;
+    overflow-x: hidden;
 
     /* background: linear-gradient(35deg, #F7CAC9, #91A8D0);; */
 }
